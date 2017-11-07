@@ -1,0 +1,21 @@
+var express = require("express");
+var app = new express();
+app.get('/', function (req, res) {
+    res.send("hello world")
+});
+
+
+app.post('/', function (req, res) {
+    res.send("Got a post request'");
+});
+
+
+
+
+
+var server = app.listen(3000, function () {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log("Examaple app listenling at http://%s:%s", host, port);
+})
+ 
