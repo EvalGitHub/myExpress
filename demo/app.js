@@ -5,6 +5,7 @@ app.get('/a', function (req, res) {
 });
 
 
+/*
 app.post('/b', function (req, res) {
     res.send("Got a post request'");
 });
@@ -14,7 +15,18 @@ app.all('/secret', function (req, res, next) {
     console.log('Accessing the secret section ...');
     next(); // pass control to the next handler
 });
+ */
 
+
+
+app.get('/ab?cd',function(req,res){
+    res.send("ab?cd");
+});
+
+
+app.get('/e/',function(req,res){
+    res.send('/a/');
+});
 
 var server = app.listen(3001, function () {
     var host = server.address().address;
