@@ -1,0 +1,137 @@
+<!-- <h1>文章列表</h1>
+
+{{#each entries}}
+   <p>
+      <a href="/article/{{id}}">{{title}}</a><br/>
+      Published: {{published}}
+   </p>
+{{/each}} -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+
+    </script>
+    <script type="text/javascript" src="../lib/vue2.js">  </script>
+    <script type="text/javascript" src="../lib/vue_router.js">  </script>
+    <script type="text/javascript" src="../lib/axios.min.js">  </script>
+  </head>
+  <body>
+    <div class="">
+    </div>
+    <div class="" id="app">
+
+    </div>
+  </body>
+</html>
+<script type="text/javascript">
+
+  const Home={
+    template:'<div>this is home page</div>',
+    // methods:{
+    //   getData(){
+    //     axios.get('/').then(function(res){
+    //       console.log(res);
+    //     }).catch(function(err){
+    //       console.log(err);
+    //     });
+    //   }
+    // },
+    // mounted(){
+    //   this.getData();
+    // }
+
+  };
+  const foo={
+    template:'<div>this is foo page</div>',
+    methods:{
+      getData(){
+        axios.get('/foo').then(function(res){
+          console.log(res);
+        }).catch(function(err){
+          console.log(err);
+        });
+      }
+    },
+    mounted(){
+      this.getData();
+    }
+  };
+  const bar={
+    template:'<div>this is bar page</div>',
+    methods:{
+      getData(){
+        axios.get('/bar').then(function(res){
+          console.log(res);
+        }).catch(function(err){
+          console.log(err);
+        });
+      }
+    },
+    mounted(){
+      this.getData();
+    }
+  };
+
+  const goInfo={
+    template:'<div>this is foo goInfo</div>',
+    methods:{
+      getData(){
+        axios.get('/goInfo').then(function(res){
+          console.log(res);
+        }).catch(function(err){
+          console.log(err);
+        });
+      }
+    },
+    mounted(){
+      this.getData();
+    }
+  };
+   const router =new VueRouter({
+       mode:'history',
+       routes:
+     [
+        {
+          path:'/',
+          name:'home',
+          component:Home,
+          // children:[
+          //     {path:'foo',name:'foo',component:foo},
+          // ]
+        },
+        {path:'foo',name:'foo',component:foo},
+        {path:'/bar',name:'bar',component:bar},
+        {path:'/goinfo',name:'goinfo',component:goInfo},
+     ]
+   })
+
+  const mou = new Vue({
+    el:"#app",
+    router,
+    template:`
+      <div id="app">
+        <h1>Name Routes</h1>
+        <p>currnt route </p>
+        <ul>
+          <li>
+            <router-link :to="{name:'home'}">home</router-link>
+          </li>
+          <li>
+            <router-link :to="{name:'foo'}">foo</router-link>
+          </li>
+          <li>
+            <router-link :to="{name:'bar'}">bar</router-link>
+          </li>
+          <li>
+            <router-link :to="{name:'goinfo'}">goinfo</router-link>
+          </li>
+        </ul>
+        <router-view></router-view>
+      </div>
+    `
+  });
+</script>
